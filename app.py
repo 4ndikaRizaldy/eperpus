@@ -3,7 +3,6 @@ import os
 
 # Menambahkan logo dan title yang lebih menarik
 st.title("E-Perpus - Baca Buku Online")
-st.image("D:/PROJECT/refrensi/eperpusv1/assets/logo.jpg", width=150)
 
 # URL server Flask
 FLASK_URL = "http://192.168.1.72:8000/books"
@@ -13,10 +12,21 @@ BOOKS_DIR = "books"
 
 # Daftar buku otomatis
 books = [f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf")]
+# Path logo
+logo_path = "D:/PROJECT/refrensi/eperpusv1/assets/logo.jpg"
 
-# Sidebar untuk navigasi
-st.sidebar.header("Navigasi")
-st.sidebar.text("Pilih buku dan baca langsung di sini.")
+# Tampilan Selamat Datang
+html_content = """
+<div style="background-color: #f0f2f6; padding: 30px; border-radius: 10px; text-align: center;">
+    <h1 style="color: #3D85C6;">Selamat Datang di E-Perpus</h1>
+    <p style="font-size: 18px; color: #555;">
+        Temukan berbagai buku menarik dan baca secara online.
+    </p>
+</div>
+"""
+
+st.markdown(html_content, unsafe_allow_html=True)
+
 if books:
     selected_book = st.selectbox("Pilih Buku:", books)
 
